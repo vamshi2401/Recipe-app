@@ -8,6 +8,7 @@ const Login = ({ setIsLoggedIn }) => {
   const [email, setemail] = useState('');
   const [password, setPassword] = useState("");
   const [error, setError]=useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handlelogin = async (e) => {
@@ -18,6 +19,7 @@ const Login = ({ setIsLoggedIn }) => {
     }
 
     setError("");
+    setLoading(true);
 
     try {
       const response = await axios.post("http://localhost:3000/login", { email, password });
@@ -26,13 +28,15 @@ const Login = ({ setIsLoggedIn }) => {
       navigate('/home');
     } catch (error) {
       setError("invalid details");
+    } finally {
+      setLoading(false);
     }
 
 
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
+    <div className="d-flex justify-content-center align-items-center vh-100 bg-info">
       <div className=" p-4 bg-white border rounded shadow flex-column w-25 h-50 d-flex justify-content-center align-items-center bg-light">
         <h2 className="text-center">Login</h2>
         {error && <div className="alert alert-danger p-2">{error}</div>}
@@ -43,7 +47,7 @@ const Login = ({ setIsLoggedIn }) => {
         <div className="form-group">
           <input type="password" onChange={(e) => setPassword(e.target.value)} class="form-control p-2  m-2" id="InputPassword" placeholder="Password" />
         </div>
-        <button onClick={handlelogin} type="submit" class="btn btn-primary align-self-center m-2">Login</button>
+        <button onClick={handlelogin} type="submit" class="btn btn-primary align-self-center m-2" disabled={loading}>{loading ? "Logging in ..." : "Register"}</button>
         <p>New user? <Link to="/register">Register</Link></p>
       </div>
     </div>

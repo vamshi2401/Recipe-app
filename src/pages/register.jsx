@@ -11,6 +11,7 @@ const Register = ({ setIsLoggedIn }) => {
   const [email, setemail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError]=useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate("");
 
   const handleRegister = async () => {
@@ -32,6 +33,7 @@ const Register = ({ setIsLoggedIn }) => {
     }
 
     setError("");
+    setLoading(true);
 
     try {
       await axios.post("http://localhost:3000/register", { username, email, password });
@@ -40,6 +42,8 @@ const Register = ({ setIsLoggedIn }) => {
       navigate('/home');
     } catch (error) {
       setError("Registration falied! Please check the data entered");
+    } finally {
+      setLoading(false);
     }
 
   };
@@ -59,7 +63,7 @@ const Register = ({ setIsLoggedIn }) => {
         <div className="form-group">
           <input type="password" onChange={(e) => setPassword(e.target.value)} className="form-control p-2  m-2" id="InputPassword" placeholder="Password" />
         </div>
-        <button onClick={handleRegister} type="submit" class="btn btn-primary align-self-center m-2">Register</button>
+        <button onClick={handleRegister} type="submit" class="btn btn-primary align-self-center m-2" disabled={loading}>{loading ? "Registering..." : "Register"}</button>
         <p> <Link to="/login">Login</Link></p>
       </div>
     </div>
