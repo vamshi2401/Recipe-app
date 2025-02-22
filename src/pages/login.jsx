@@ -7,21 +7,25 @@ import '../App.css';
 const Login = ({ setIsLoggedIn }) => {
   const [email, setemail] = useState('');
   const [password, setPassword] = useState("");
+  const [error, setError]=useState("");
   const navigate = useNavigate();
 
   const handlelogin = async (e) => {
     e.preventDefault();
     if (!email || !password) {
-      alert("All the fields are neccessary");
+      setError("All the fields are neccessary");
       return;
     }
+
+    setError("");
+
     try {
       const response = await axios.post("http://localhost:3000/login", { email, password });
       localStorage.setItem("username", response.data.username);
       setIsLoggedIn(true);
       navigate('/home');
     } catch (error) {
-      alert("invalid details");
+      setError("invalid details");
     }
 
 
@@ -31,6 +35,7 @@ const Login = ({ setIsLoggedIn }) => {
     <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
       <div className=" p-4 bg-white border rounded shadow flex-column w-25 h-50 d-flex justify-content-center align-items-center bg-light">
         <h2 className="text-center">Login</h2>
+        {error && <div className="alert alert-danger p-2">{error}</div>}
         <div className="form-group">
 
           <input type="email" onChange={(e) => setemail(e.target.value)} class="form-control  m-2" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email" />
