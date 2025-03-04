@@ -22,7 +22,7 @@ const Login = ({ setIsLoggedIn }) => {
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:3000/login", { email, password });
+      const response = await axios.post("https://recipe-app-backend-mmsp.onrender.com/login", { email, password });
       localStorage.setItem("username", response.data.username);
       setIsLoggedIn(true);
       navigate('/home');
