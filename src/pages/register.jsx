@@ -36,7 +36,7 @@ const Register = ({ setIsLoggedIn }) => {
     setLoading(true);
 
     try {
-      await axios.post("https://recipe-app-backend-mmsp.onrender.com/register", { username, email, password });
+      await axios.post("https://recipe-app-backend-1-ta9u.onrender.com/register", { username, email, password });
       localStorage.setItem("username", username);
       setIsLoggedIn(true);
       navigate('/home');
