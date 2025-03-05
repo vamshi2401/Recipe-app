@@ -24,6 +24,7 @@ const Login = ({ setIsLoggedIn }) => {
     try {
       const response = await axios.post("https://recipe-app-backend-1-ta9u.onrender.com/auth/login", { email, password });
       localStorage.setItem("username", response.data.username);
+      localStorage.setItem("token", response.data.token);
       setIsLoggedIn(true);
       navigate('/home');
     } catch (error) {

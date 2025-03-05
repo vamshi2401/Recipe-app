@@ -21,7 +21,8 @@ const Register = ({ setIsLoggedIn }) => {
       return;
     }
 
-    const emailRegex = '/^[^@]+@[^@]+[^@]+$/';
+    //const emailRegex = '/^[^@]+@[^@]+[^@]+$/';
+    const emailRegex = /^[^@]+@[^@]+\.[^@]+$/;
     if (!emailRegex.test(email)) {
       setError("Please enter a valid email address.");
       return;
