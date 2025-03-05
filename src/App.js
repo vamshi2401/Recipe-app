@@ -20,8 +20,8 @@ function App() {
       <Routes>
         
         <Route path="/" element={<Home /> } />
-        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
-        <Route path="/register" element={<Register setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/auth/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/auth/register" element={<Register setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/home" element={ <Home /> } />
       </Routes>
     </Router>
