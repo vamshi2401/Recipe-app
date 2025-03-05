@@ -22,7 +22,7 @@ const Login = ({ setIsLoggedIn }) => {
     setLoading(true);
 
     try {
-      const response = await axios.post("https://recipe-app-backend-1-ta9u.onrender.com/api/auth/login", { email, password });
+      const response = await axios.post("https://recipe-app-backend-1-ta9u.onrender.com/auth/login", { email, password });
       localStorage.setItem("username", response.data.username);
       setIsLoggedIn(true);
       navigate('/home');
