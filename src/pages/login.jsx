@@ -22,7 +22,7 @@ const Login = ({ setIsLoggedIn }) => {
     setLoading(true);
 
     try {
-      const response = await axios.post("https://recipe-app-backend-1-ta9u.onrender.com/auth/login", { email, password });
+      const response = await axios.post("http://localhost:3000/auth/login", { email, password });
       localStorage.setItem("username", response.data.username);
       localStorage.setItem("token", response.data.token);
       setIsLoggedIn(true);
@@ -48,7 +48,7 @@ const Login = ({ setIsLoggedIn }) => {
         <div className="form-group">
           <input type="password" onChange={(e) => setPassword(e.target.value)} class="form-control p-2  m-2" id="InputPassword" placeholder="Password" />
         </div>
-        <button onClick={handlelogin} type="submit" class="btn btn-primary align-self-center m-2" disabled={loading}>{loading ? "Logging in ..." : "Register"}</button>
+        <button onClick={handlelogin} type="submit" class="btn btn-primary align-self-center m-2" disabled={loading}>{loading ? "Logging in ..." : "Login"}</button>
         <p>New user? <Link to="/register">Register</Link></p>
       </div>
     </div>

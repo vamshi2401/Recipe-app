@@ -4,6 +4,10 @@ import Navbar from "./components/navbar";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import Home from "./pages/Home";
+import PrivateRoute from "./components/privateroute";
+import AddRecipe from './components/addrecipe';
+import UpdateRecipe from './components/updaterecipe';
+ 
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -23,6 +27,22 @@ function App() {
         <Route path="/auth/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/auth/register" element={<Register setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/home" element={ <Home /> } />
+        <Route
+          path="/add-recipe"
+          element={
+            <PrivateRoute isLoggedIn={isLoggedIn}>
+              <AddRecipe />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/update-recipe/:id"
+          element={
+            <PrivateRoute isLoggedIn={isLoggedIn}>
+              <UpdateRecipe />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </Router>
   )
