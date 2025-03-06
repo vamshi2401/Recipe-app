@@ -29,7 +29,7 @@ const UpdateRecipe = () => {
       }
     };
     fetchRecipe();
-  }, [id]);
+  }, [title]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,7 +39,7 @@ const UpdateRecipe = () => {
       const response = await axios.put(
         `https://recipe-app-backend-1-ta9u.onrender.com/recipes/${title}`,
         {
-          title,
+          
           description,
           ingredients,
           instructions,
@@ -62,16 +62,7 @@ const UpdateRecipe = () => {
       <h2>Update Recipe</h2>
       <form onSubmit={handleSubmit}>
         
-        <div className="form-group">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        </div>
+        
         <div className="form-group">
           <textarea
             className="form-control"
