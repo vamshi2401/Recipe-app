@@ -18,7 +18,7 @@ const UpdateRecipe = () => {
       try {
         const response = await axios.get(`https://recipe-app-backend-1-ta9u.onrender.com/recipes/${title}`);
         const recipe = response.data;
-        setTitle(recipe.title);
+        
         setDescription(recipe.description);
         setIngredients(recipe.ingredients);
         setInstructions(recipe.instructions);
