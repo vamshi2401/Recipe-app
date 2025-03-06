@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 
@@ -24,6 +24,17 @@ const Home = () => {
               <div className="card-body">
                 <h5 className="card-title">{recipe.title}</h5>
                 <p className="card-text">{recipe.description}</p>
+                <h6>Ingredients:</h6>
+                <ul>
+                  {recipe.ingredients && recipe.ingredients.map((ingredient, index) => (
+                    <li key={index}>{ingredient}</li>
+                  ))}
+                </ul>
+                <p>{recipe.instructions}</p>
+
+                <img src={recipe.imageUrl} alt={recipe.name} />
+                <p>Cooking Time: {recipe.cookingTime} minutes</p>
+
               </div>
             </div>
           </div>
