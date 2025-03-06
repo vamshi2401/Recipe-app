@@ -3,20 +3,20 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
 const UpdateRecipe = () => {
-  const [title, setTitle] = useState("");
+  
   const [description, setDescription] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [cookingTime, setCookingTime] = useState("");
   const navigate = useNavigate();
-  const { id } = useParams(); // To get the recipe ID from the URL
+  const { title } = useParams(); // To get the recipe ID from the URL
 
   useEffect(() => {
     // Fetch the recipe data by its ID
     const fetchRecipe = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/recipes/${id}`);
+        const response = await axios.get(`https://recipe-app-backend-1-ta9u.onrender.com/recipes/${title}`);
         const recipe = response.data;
         setTitle(recipe.title);
         setDescription(recipe.description);
@@ -37,7 +37,7 @@ const UpdateRecipe = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.put(
-        `http://localhost:3000/recipes/${id}`,
+        `https://recipe-app-backend-1-ta9u.onrender.com/recipes/${title}`,
         {
           title,
           description,

@@ -17,7 +17,7 @@ const AddRecipe = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "http://localhost:3000/recipes",
+        "https://recipe-app-backend-1-ta9u.onrender.com/recipes",
         {
           title,
           description,
