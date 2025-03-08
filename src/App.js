@@ -8,6 +8,7 @@ import PrivateRoute from "./components/privateroute";
 import AddRecipe from './components/addrecipe';
 import UpdateRecipe from './components/updaterecipe';
 import SearchRecipes from "./components/searchrecipe";
+import RecipeDetails from "./components/recipedetails";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -21,7 +22,7 @@ function App() {
   return (
     <Router>
       <Navbar isLoggedIn={isLoggedIn}/>
-      <SearchRecipes/>
+      
       <Routes>
         
         <Route path="/" element={<Home /> } />
@@ -37,10 +38,18 @@ function App() {
           }
         />
         <Route
-          path="/update-recipe/:id"
+          path="/search-recipe"
           element={
             <PrivateRoute isLoggedIn={isLoggedIn}>
-              <UpdateRecipe />
+              <SearchRecipes />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/recipe/:id"
+          element={
+            <PrivateRoute isLoggedIn={isLoggedIn}>
+              <RecipeDetails />
             </PrivateRoute>
           }
         />

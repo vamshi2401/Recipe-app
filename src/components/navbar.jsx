@@ -40,8 +40,8 @@ const Navbar = ({ isLoggedIn }) => {
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/update-recipe">
-                      update Recipe
+                    <Link className="nav-link" to="/search-recipe">
+                      Search Recipe
                     </Link>
                   </li>
                 </>
