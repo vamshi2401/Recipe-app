@@ -46,7 +46,7 @@ function App() {
           }
         />
         <Route
-          path="/recipe/:id"
+          path="/recipes/:id"
           element={
             <PrivateRoute isLoggedIn={isLoggedIn}>
               <RecipeDetails />
