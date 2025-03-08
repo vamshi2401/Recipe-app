@@ -59,6 +59,15 @@ const SearchRecipes = () => {
             <div className="card-body">
               <h5 className="card-title">{recipe.title}</h5>
               <p className="card-text">{recipe.description}</p>
+              <p><strong>Instructions</strong> {recipe.instructions}</p>
+              <p><strong>Ingredients:</strong></p>
+              <ol>
+                {recipe.ingredients.map((ingredient, index) => (
+                  <li key={index}>{ingredient}</li>
+                ))}
+              </ol>
+              <img src={recipe.imageUrl} />
+              <p><strong>Cooking Time:</strong> {recipe.cookingTime}</p>
 
               <a href={`/recipes/${recipe._id}`}
                 className={`btn ${localStorage.getItem("token") ? "btn-primary" : "btn-secondary disabled"}`}>
