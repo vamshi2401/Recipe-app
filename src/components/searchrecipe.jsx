@@ -19,7 +19,7 @@ const SearchRecipes = () => {
       const response = await axios.get(
         `https://recipe-app-backend-1-ta9u.onrender.com/recipes/search?query=${query}`
       );
-      
+
       if (response.data.recipes.length > 0) {
         setRecipes(response.data.recipes);
         setError("");
@@ -52,15 +52,16 @@ const SearchRecipes = () => {
 
       {error && <div className="alert alert-danger mt-3">{error}</div>}
 
-     
+
       <div className="recipe-list mt-4">
         {recipes.map((recipe) => (
           <div key={recipe._id} className="card mb-3">
             <div className="card-body">
               <h5 className="card-title">{recipe.title}</h5>
               <p className="card-text">{recipe.description}</p>
-              
-              <a href={`/recipe/${recipe._id}`} className="btn btn-primary">
+
+              <a href={`/recipe/${recipe._id}`}
+                className={`btn ${localStorage.getItem("token") ? "btn-primary" : "btn-secondary disabled"}`}>
                 View Recipe
               </a>
             </div>
