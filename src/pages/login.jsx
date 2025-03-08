@@ -49,7 +49,7 @@ const Login = ({ setIsLoggedIn }) => {
           <input type="password" onChange={(e) => setPassword(e.target.value)} class="form-control p-2  m-2" id="InputPassword" placeholder="Password" />
         </div>
         <button onClick={handlelogin} type="submit" class="btn btn-primary align-self-center m-2" disabled={loading}>{loading ? "Logging in ..." : "Login"}</button>
-        <p>New user? <Link to="/register">Register</Link></p>
+        <p>New user? <Link to="/auth/register">Register</Link></p>
       </div>
     </div>
     

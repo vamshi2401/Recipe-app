@@ -65,7 +65,7 @@ const Register = ({ setIsLoggedIn }) => {
           <input type="password" onChange={(e) => setPassword(e.target.value)} className="form-control p-2  m-2" id="InputPassword" placeholder="Password" />
         </div>
         <button onClick={handleRegister} type="submit" class="btn btn-primary align-self-center m-2" disabled={loading}>{loading ? "Registering..." : "Register"}</button>
-        <p> <Link to="/login">Login</Link></p>
+        <p> <Link to="/auth/login">Login</Link></p>
       </div>
     </div>
     
