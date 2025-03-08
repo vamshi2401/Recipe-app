@@ -29,6 +29,7 @@ function App() {
         <Route path="/auth/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/auth/register" element={<Register setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/home" element={ <Home /> } />
+        <Route path="/recipes/:id" element={<RecipeDetails />} />
         <Route
           path="/add-recipe"
           element={
@@ -45,14 +46,7 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route
-          path="/recipes/:id"
-          element={
-            <PrivateRoute isLoggedIn={isLoggedIn}>
-              <RecipeDetails />
-            </PrivateRoute>
-          }
-        />
+        
       </Routes>
     </Router>
   )

@@ -60,7 +60,7 @@ const SearchRecipes = () => {
               <h5 className="card-title">{recipe.title}</h5>
               <p className="card-text">{recipe.description}</p>
 
-              <a href={`/recipe/${recipe._id}`}
+              <a href={`/recipes/${recipe._id}`}
                 className={`btn ${localStorage.getItem("token") ? "btn-primary" : "btn-secondary disabled"}`}>
                 View Recipe
               </a>
