@@ -3,10 +3,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
-const RecipeDetails=()=>{
-  const {id}= useParams();
-  const [recipe,setRecipe]=useState(null);
-  const [error,setError]=useState("");
+const RecipeDetails = () => {
+  const { id } = useParams();
+  const [recipe, setRecipe] = useState(null);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,14 +19,15 @@ const RecipeDetails=()=>{
 
 
       try {
-        const response = await axios.get(`https://recipe-app-backend-1-ta9u.onrender.com/recipes/${id}`, {headers:{Authorization:token}});
+        const response = await axios.get(`https://recipe-app-backend-1-ta9u.onrender.com/recipes/${id}`, { headers: { Authorization: `Bearer ${token}` } });
         setRecipe(response.data);
+        console.log(response.data)
       } catch (err) {
         setError("Failed to load recipe details");
       }
     };
     fetchRecipeDetails();
-  }, [id,navigate]);
+  }, [id, navigate]);
 
   if (error) {
     return <div className="alert alert-danger">{error}</div>;
@@ -40,14 +41,14 @@ const RecipeDetails=()=>{
     <div className="container">
       <h2>{recipe.title}</h2>
       <p><strong>Description:</strong> {recipe.description}</p>
-      <p><strong>Instructions</strong> {recipe.instructions.join(", ")}</p>
+      <p><strong>Instructions</strong> {recipe.instructions}</p>
       <p><strong>Ingredients:</strong></p>
       <ol>
         {recipe.ingredients.map((ingredient, index) => (
           <li key={index}>{ingredient}</li>
         ))}
       </ol>
-      <img src={recipe.imageUrl} alt="" />
+      <img src={recipe.imageUrl}/>
       <p><strong>Cooking Time:</strong> {recipe.cookingTime}</p>
     </div>
   );

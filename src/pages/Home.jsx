@@ -27,6 +27,7 @@ const Home = () => {
           recipes.map((recipe) => (
             <div key={recipe._id} className="card mb-3">
               <div className="card-body">
+                <img src={recipe.imageUrl} alt="" />
                 <h5 className="card-title">{recipe.title}</h5>
                 <p className="card-text">{recipe.description}</p>
                 <a href={`/recipes/${recipe._id}`} className="btn btn-primary">View Recipe</a>
