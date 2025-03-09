@@ -69,9 +69,9 @@ const SearchRecipes = () => {
               <img src={recipe.imageUrl} />
               <p><strong>Cooking Time:</strong> {recipe.cookingTime}</p>
 
-              <a href={`/recipes/${recipe._id}`}
+              <a href={`/recipes/${recipe.title}`}
                 className={`btn ${localStorage.getItem("token") ? "btn-primary" : "btn-secondary disabled"}`}>
-                View Recipe
+                update Recipe
               </a>
             </div>
           </div>

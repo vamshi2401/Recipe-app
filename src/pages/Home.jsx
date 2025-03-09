@@ -30,7 +30,7 @@ const Home = () => {
                 <img src={recipe.imageUrl} alt="" />
                 <h5 className="card-title">{recipe.title}</h5>
                 <p className="card-text">{recipe.description}</p>
-                <a href={`/recipes/${recipe._id}`} className="btn btn-primary">View Recipe</a>
+                <a href={`/recipes/${recipe.title}`} className="btn btn-primary">update Recipe</a>
               </div>
             </div>
           ))

@@ -30,6 +30,7 @@ function App() {
         <Route path="/auth/register" element={<Register setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/home" element={ <Home /> } />
         <Route path="/recipes/:id" element={<RecipeDetails />} />
+        <Route path="/recipes/:title" element={<UpdateRecipe />} />
         <Route
           path="/add-recipe"
           element={
