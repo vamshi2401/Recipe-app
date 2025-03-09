@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 
 const Home = () => {
@@ -12,7 +11,7 @@ const Home = () => {
       try {
         const response = await axios.get('https://recipe-app-backend-1-ta9u.onrender.com/recipes');
         setRecipes(response.data.recipes);
-      } catch (err){
+      } catch (err) {
         setError("Failed to load recipes")
       }
     };
@@ -31,7 +30,16 @@ const Home = () => {
                 <img src={recipe.imageUrl} alt="" />
                 <h5 className="card-title">{recipe.title}</h5>
                 <p className="card-text">{recipe.description}</p>
-                <Link to={`/recipes/${recipe._id}`}>Edit</Link>
+                <p><strong>Instructions</strong> {recipe.instructions}</p>
+                <p><strong>Ingredients:</strong></p>
+                <ol>
+                  {recipe.ingredients.map((ingredient, index) => (
+                    <li key={index}>{ingredient}</li>
+                  ))}
+                </ol>
+                
+                <p><strong>Cooking Time:</strong> {recipe.cookingTime}</p>
+                
               </div>
             </div>
           ))
