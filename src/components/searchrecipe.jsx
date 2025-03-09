@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const SearchRecipes = () => {
   const [query, setQuery] = useState("");
@@ -69,10 +70,10 @@ const SearchRecipes = () => {
               <img src={recipe.imageUrl} />
               <p><strong>Cooking Time:</strong> {recipe.cookingTime}</p>
 
-              <a href={`/recipes/${recipe._id}`}
+              <Link to={`/recipes/${recipe._id}`}
                 className={`btn ${localStorage.getItem("token") ? "btn-primary" : "btn-secondary disabled"}`}>
-                update Recipe
-              </a>
+                Edit
+              </Link>
             </div>
           </div>
         ))}
